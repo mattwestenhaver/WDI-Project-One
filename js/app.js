@@ -1,15 +1,31 @@
-// ------ VARIABLES ------ //
+// ------- VARIABLES ------- //
 var boxes = $('.gameboard div')
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, ' ']
 var emptyBox;
 var currentNumber;
 var count = 0;
+var gameTimer = 0;
+var gameIntervalTimer;
 
-// ------ FUNCTIONS ------ //
+
+// ------- FUNCTIONS ------- //
 
 // adds event listeners to all the boxes
 for (var i = 0; i < boxes.length; i++) {
   boxes[i].addEventListener('click', boxClickHandler)
+}
+
+// controls the timer starting
+function myTimer() {
+  gameIntervalTimer = setInterval(function() {
+    gameTimer++;
+    $('.timer').text(gameTimer + ' seconds...')
+  }, 1000);
+}
+
+// stops the timer *** currently not functioning properly
+function timerStop() {
+  clearInterval(gameIntervalTimer)
 }
 
 // randomize the numbers array
@@ -45,26 +61,21 @@ function boxClickHandler() {
   emptyBox = $(".tile:contains(' ')")
   //console.log(currentNumber)
   if (checkDone()) {
-    alert('congrats! your time was ' + count + " seconds!")
-    playerOneTime = count
-    $('.timer').text(playerOneTime + ' seconds!')
+    alert('congrats! your time was ' + gameTimer + " seconds!")
+    playerOneTime = gameTimer
+    timerStop()
   }
 }
 
 // randomize the board when start is clicked and begin the timer
 $('.start').on('click', function(){
-  setInterval (function () {
-    count++;
-    if (count >= 0) {
-      $('.timer').text(count + ' seconds...');
-    }
-  }, 1000);
   shuffle(numbers)
   $.each( numbers, function( i, val ) {
     $( ".gameboard div" ).eq(i).text(val);
   });
   emptyBox = $(".tile:contains(' ')")
   emptyBox.addClass('emptyBox')
+  myTimer()
 })
 
 // check to see if the puzzle has been completed
