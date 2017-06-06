@@ -6,14 +6,11 @@ var currentNumber;
 var count = 0;
 var gameTimer = 0;
 var gameIntervalTimer;
+var playerOneTime;
+var playerTwoTime;
 
 
 // ------- FUNCTIONS ------- //
-
-// adds event listeners to all the boxes
-// for (var i = 0; i < boxes.length; i++) {
-//   boxes[i].addEventListener('click', boxClickHandler)
-// }
 
 // controls the timer starting
 function myTimer() {
@@ -66,10 +63,20 @@ function boxClickHandler() {
   emptyBox = $(".tile:contains(' ')")
   if (checkDone()) {
     alert('congrats! your time was ' + gameTimer + " seconds!")
-    playerOneTime = gameTimer
-    timerStop()
-    $('.start_button').text('player 2 start')
-    gameTimer = 0
+    if (!playerOneTime) {
+      playerOneTime = gameTimer
+      timerStop()
+      $('.start_button').text('player 2 start')
+      gameTimer = 0
+    } else {
+      playerTwoTime = gameTimer
+      timerStop()
+      if (playerOneTime > playerTwoTime) {
+        $('body').text('player 2 wins!')
+      } else {
+        $('body').text('player 1 wins!')
+      }
+    }
   }
 }
 
