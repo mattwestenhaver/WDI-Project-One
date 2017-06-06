@@ -84,11 +84,22 @@ function boxClickHandler() {
 $('.start').on('click', function(){
   shuffle(numbers)
   $.each( numbers, function( i, val ) {
-    $( ".gameboard div" ).eq(i).text(val);
+    $(".gameboard div").eq(i).text(val);
   });
   emptyBox = $(".tile:contains(' ')")
   emptyBox.addClass('emptyBox')
   myTimer()
+  legalMove()
+})
+
+// re-randomize the board in case the player gets stuck
+$('.randomizer').on('click', function(){
+  shuffle(numbers)
+  $.each( numbers, function( i, val ) {
+    $(".gameboard div").eq(i).text(val);
+  });
+  emptyBox = $(".tile:contains(' ')")
+  emptyBox.addClass('emptyBox')
   legalMove()
 })
 
