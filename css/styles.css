@@ -11,35 +11,44 @@ h1 {
   text-align: center;
   font-family: 'Gloria Hallelujah', cursive;
   text-transform: uppercase;
-  font-size: 45px;
-  line-height: 50px;
-  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 42px;
+  margin-bottom: 15px;
   color: maroon;
 }
 
 p {
   text-align: center;
   font-family: 'Bubbler One', sans-serif;
-  font-size: 22px;
-  line-height: 28px;
-  width: 720px;
-  margin: 0 auto 20px auto;
+  font-size: 16px;
+  line-height: 22px;
+  max-width: 720px;
+  min-width: 400px;
+  margin: 0 auto 12px auto;
   color: black;
 }
 
+.line1 {
+  margin-bottom: 1px;
+}
+
+.line2 {
+  margin-top: 1px;
+}
+
 .container {
-  width: 466px;
+  width: 366px;
   height: 50px;
-  margin: 0 auto 20px auto;
-  line-height: 50px;
+  margin: 0 auto;
+  line-height: 35px;
 }
 
 .start_button {
   float: left;
   font-family: 'Bubbler One', sans-serif;
-  width: 160px;
-  height: 45px;
-  font-size: 23px;
+  width: 120px;
+  height: 35px;
+  font-size: 19px;
   border-radius: 10px;
   margin-left: 25px;
   background: rgb(230, 230, 230);
@@ -50,34 +59,34 @@ p {
 .timer {
   float: right;
   font-family: 'Bubbler One', sans-serif;
-  font-size: 28px;
+  font-size: 23px;
   padding-right: 30px;
   color: maroon;
 }
 
 .gameboard {
   clear: both;
-  width: 426px;
-  height: 426px;
+  width: 336px;
+  height: 336px;
   border: 5px solid black;
   background: #125688;
-  padding: 15px;
+  padding: 10px;
   margin: 0 auto 20px auto;
   border-radius: 20px;
 }
 
 .gameboard div {
   font-family: 'Shadows Into Light', cursive;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   float: left;
   border: 4px solid lightblue;
   background: rgb(230, 230, 230);
   margin: 7px;
   border-radius: 10px;
-  line-height: 120px;
+  line-height: 90px;
   text-align: center;
-  font-size: 55px;
+  font-size: 45px;
   letter-spacing: 0.08em;
   color: maroon;
 }
@@ -93,20 +102,19 @@ p {
 }
 
 .random {
-  width: 200px;
+  width: 300px;
   height: 50px;
-  text-align: center;
   margin: 0 auto;
 }
 
 .randomizer {
   float: left;
   font-family: 'Bubbler One', sans-serif;
-  width: 205px;
-  height: 45px;
-  font-size: 23px;
+  width: 160px;
+  height: 35px;
+  font-size: 19px;
   border-radius: 10px;
-  margin: 0 auto;
+  margin-left: 70px;
   background: rgb(230, 230, 230);
   color: maroon;
   border-color: lightblue;

@@ -72,9 +72,13 @@ function boxClickHandler() {
       playerTwoTime = gameTimer
       timerStop()
       if (playerOneTime > playerTwoTime) {
-        $('body').text('player 2 wins!')
+        $('h1').text('player 2 wins!')
+        $('.line1').text('player 2: ' + playerTwoTime + ' seconds')
+        $('.line2').text('player 1: ' + playerOneTime + ' seconds')
       } else {
-        $('body').text('player 1 wins!')
+        $('h1').text('player 1 wins!')
+        $('.line1').text('player 1: ' + playerOneTime + ' seconds')
+        $('.line2').text('player 2: ' + playerTwoTime + ' seconds')
       }
     }
   }
