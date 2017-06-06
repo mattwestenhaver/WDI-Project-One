@@ -11,9 +11,9 @@ var gameIntervalTimer;
 // ------- FUNCTIONS ------- //
 
 // adds event listeners to all the boxes
-for (var i = 0; i < boxes.length; i++) {
-  boxes[i].addEventListener('click', boxClickHandler)
-}
+// for (var i = 0; i < boxes.length; i++) {
+//   boxes[i].addEventListener('click', boxClickHandler)
+// }
 
 // controls the timer starting
 function myTimer() {
@@ -45,11 +45,12 @@ function shuffle(numbers) {
 
 // adds numbers to each div
 $.each( numbers, function( i, val ) {
-  $( ".gameboard div" ).eq(i).text(val);
+  $(".gameboard div").eq(i).text(val);
 });
 
 // controls what happens when each box is clicked
 function boxClickHandler() {
+  legalMove()
   currentNumber = $(this).text()
   // adds clicked number to emptyBox and removes emptyBox styling
   $(emptyBox).text(currentNumber)
@@ -58,12 +59,17 @@ function boxClickHandler() {
   $(this).text(' ')
   $(this).addClass('emptyBox')
   // makes emptyBox the current empty box
+  for (var i = 0; i < boxes.length; i++) {
+     boxes[i].removeEventListener('click', boxClickHandler)
+  }
+  legalMove()
   emptyBox = $(".tile:contains(' ')")
-  //console.log(currentNumber)
   if (checkDone()) {
     alert('congrats! your time was ' + gameTimer + " seconds!")
     playerOneTime = gameTimer
     timerStop()
+    $('.start_button').text('player 2 start')
+    gameTimer = 0
   }
 }
 
@@ -76,7 +82,63 @@ $('.start').on('click', function(){
   emptyBox = $(".tile:contains(' ')")
   emptyBox.addClass('emptyBox')
   myTimer()
+  legalMove()
 })
+
+// add event listeners to 'legal move' tiles based on blank tile location
+function legalMove() {
+  var blankOne = boxes.eq(0).text() === " ";
+  if (blankOne) {
+    boxes[1].addEventListener('click', boxClickHandler)
+    boxes[3].addEventListener('click', boxClickHandler)
+  }
+  var blankTwo = boxes.eq(1).text() === " ";
+  if (blankTwo) {
+    boxes[0].addEventListener('click', boxClickHandler)
+    boxes[2].addEventListener('click', boxClickHandler)
+    boxes[4].addEventListener('click', boxClickHandler)
+  }
+  var blankThree = boxes.eq(2).text() === " ";
+  if(blankThree) {
+    boxes[1].addEventListener('click', boxClickHandler)
+    boxes[5].addEventListener('click', boxClickHandler)
+  }
+  var blankFour = boxes.eq(3).text() === " ";
+  if(blankFour) {
+    boxes[0].addEventListener('click', boxClickHandler)
+    boxes[4].addEventListener('click', boxClickHandler)
+    boxes[6].addEventListener('click', boxClickHandler)
+  }
+  var blankFive = boxes.eq(4).text() === " ";
+  if(blankFive) {
+    boxes[1].addEventListener('click', boxClickHandler)
+    boxes[3].addEventListener('click', boxClickHandler)
+    boxes[5].addEventListener('click', boxClickHandler)
+    boxes[7].addEventListener('click', boxClickHandler)
+  }
+  var blankSix = boxes.eq(5).text() === " ";
+  if(blankSix) {
+    boxes[2].addEventListener('click', boxClickHandler)
+    boxes[4].addEventListener('click', boxClickHandler)
+    boxes[8].addEventListener('click', boxClickHandler)
+  }
+  var blankSeven = boxes.eq(6).text() === " ";
+  if(blankSeven) {
+    boxes[3].addEventListener('click', boxClickHandler)
+    boxes[7].addEventListener('click', boxClickHandler)
+  }
+  var blankEight = boxes.eq(7).text() === " ";
+  if(blankEight) {
+    boxes[4].addEventListener('click', boxClickHandler)
+    boxes[6].addEventListener('click', boxClickHandler)
+    boxes[8].addEventListener('click', boxClickHandler)
+  }
+  var blankNine = boxes.eq(8).text() === " ";
+  if(blankNine) {
+    boxes[5].addEventListener('click', boxClickHandler)
+    boxes[7].addEventListener('click', boxClickHandler)
+  }
+}
 
 // check to see if the puzzle has been completed
 function checkDone() {
