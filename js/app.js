@@ -8,9 +8,14 @@ var gameTimer = 0;
 var gameIntervalTimer;
 var playerOneTime;
 var playerTwoTime;
+var playerOne = 'Player 1';
+var playerTwo = 'Player 2';
 
 
 // ------- FUNCTIONS ------- //
+
+playerOne = prompt('player 1, what is your name?')
+playerTwo = prompt('player 2, what is your name?')
 
 // controls the timer starting
 function myTimer() {
@@ -20,7 +25,7 @@ function myTimer() {
   }, 1000);
 }
 
-// stops the timer *** currently not functioning properly
+// stops the timer
 function timerStop() {
   clearInterval(gameIntervalTimer)
 }
@@ -72,13 +77,13 @@ function boxClickHandler() {
       playerTwoTime = gameTimer
       timerStop()
       if (playerOneTime > playerTwoTime) {
-        $('h1').text('player 2 wins!')
-        $('.line1').text('player 2: ' + playerTwoTime + ' seconds')
-        $('.line2').text('player 1: ' + playerOneTime + ' seconds')
+        $('h1').text(playerTwo + ' wins!')
+        $('.line1').text(playerTwo + ': ' + playerTwoTime + ' seconds')
+        $('.line2').text(playerOne + ': ' + playerOneTime + ' seconds')
       } else {
-        $('h1').text('player 1 wins!')
-        $('.line1').text('player 1: ' + playerOneTime + ' seconds')
-        $('.line2').text('player 2: ' + playerTwoTime + ' seconds')
+        $('h1').text(playerOne + ' wins!')
+        $('.line1').text(playerOne + ': ' + playerOneTime + ' seconds')
+        $('.line2').text(playerTwo + ': ' + playerTwoTime + ' seconds')
       }
     }
   }
