@@ -5,6 +5,8 @@ The goal of game is to rearrange the tiles so they are in order from 1 to 8. Thi
 
 If a player gets stuck during their turn, they have the option to re-randomize the board to help them get unstuck (the timer does NOT restart).
 
+You can play the game [here](https://mattwestenhaver.github.io/).
+
 ---
 ###Player Names
 
